@@ -1,0 +1,19 @@
+.html{
+  background-image: url("../../assets/images/home/back.jpg");
+
+}
+.questionnaire{
+width : 100%;
+height : 100%;
+}
+
+.bouton {
+	width:200px;
+	height:200px;
+	background:#fafafa;
+	box-shadow:2px 2px 8px #aaa;
+	font:bold 20px Arial;
+	border-radius:50%;
+	color:#555;
+}
+

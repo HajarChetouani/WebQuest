@@ -1,0 +1,20 @@
+<main class="html">
+    <table  *ngIf="userDetails" class="questionnaire">
+  <thead>
+      <tr>
+          <th  class="text-right">Bonjour {{userDetails.fullName.split(' ')[0]}}<input type="button" (click)="onLogout()" value="Logout" /></th>
+      </tr>
+
+  </thead>
+  <tbody>
+      <tr style="color: white; text-align: center">
+          <h3 >Créer Des Questionnaires</h3>
+                <p >Créez vos questionnaires en quelques minutes grâce à un dashboard en ligne puissant, facile et rapide.</p>
+                <button class="bouton" routerLink="/creerquestionnaire" routerLinkActive="active">Créer un questionnaire
+                  <i class="mdi mdi-plus"></i>
+                </button>
+              </tr>
+
+  </tbody>
+</table>
+</main>

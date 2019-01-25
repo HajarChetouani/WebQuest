@@ -1,0 +1,408 @@
+<main class="html">
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper">
+      <p>Titre du formulaire * : </p>
+      <input class="text-center" type="text" placeholder=" Saisie le titre de votre formulaire " [(ngModel)]="Formulaire.titre" [ngModelOptions]="{standalone: true}" required/>
+      <div class="row">
+        <fieldset >
+              <legend>Ajouter une question</legend><br>
+              <button type="button" class="btn green" (click)="addQuestions(1)">Text simple</button>
+              <button type="button" class="btn blue" (click)="addQuestions(2)">Adresse Email</button>
+              <button type="button" class="btn green" (click)="addQuestions(3)">Chiffres</button>
+              <button type="button" class="btn blue " (click)="addQuestions(5)">Case à cohcer</button>
+              <button type="button" class="btn green"  (click)="addQuestions(6)"   >Case à cocher Multiple</button>
+              <button type="button" class="btn blue" (click)="addQuestions(7)">Text long</button>
+              <button type="button" class="btn green" (click)="addQuestions(8)">Liste deroulante</button>
+        </fieldset>
+      </div>
+        <form class="example-form" >
+          <div *ngFor="let quest of Formulaire.questions; index as i" >
+            <!-- Le submit du formulaire !-->
+            <!--  ajoutere une question / proposition!-->
+            <div *ngIf=" quest.type === 'Simple' ">
+              <div class="col-md-12 grid-margin stretch-card"  >
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card-body">
+                        <div >
+                          <div class="grid">
+                            <div >
+                                <button class="button cross" (click)="delete(i)" ></button>
+                              <h3 class="card-title"># {{ i + 1 }} - Question type : {{quest.type}} </h3>
+                              <h5>  Entrez  votre question </h5>
+                              <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question" [(ngModel)]="quest.question" [ngModelOptions]="{standalone: true}" />
+                            <!--  Question obligé ou pas -->
+                              <div class="col-md-12">
+                                  <div class="form-group row">
+                                    <label class="col-md-5">  Obligatoire    :</label>
+                                    <hr>
+                                    <div class="col-sm-2">
+                                      <div class="form-radio">
+                                        <label class="form-check-label">
+                                          <input type="radio" class="form-check-input" [value]="true" [(ngModel)]="quest.obligatoire" [ngModelOptions]="{standalone: true}">
+                                          Oui
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                      <div class="form-radio">
+                                        <label class="form-check-label">
+                                          <input type="radio" class="form-check-input"   [value]="false" [(ngModel)]="quest.obligatoire" [ngModelOptions]="{standalone: true}">
+                                          Non
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                          <!-- fin  Question obligé ou pas -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--  ajoutere une question / proposition!-->
+            <div *ngIf=" quest.type === 'Long' ">
+              <div class="col-md-12 grid-margin stretch-card" >
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card-body">
+                          <div>
+                            <div class="grid">
+                              <div >
+                                  <button class="button cross" (click)="delete(i)" > </button>
+                                <h3 class="card-title">#{{ i + 1 }}- Question type : {{quest.type}} </h3>
+                                <h5>  Entrez  votre question </h5>
+                                <textarea class="form-control text-center" placeholder=" Entrez  votre question" [(ngModel)]="quest.question" [ngModelOptions]="{standalone: true}" rows="4" cols="130">
+                                </textarea>
+                                <!--  Question obligé ou pas -->
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                      <label class="col-md-5">  Obligatoire    :</label><hr>
+                                      <div class="col-sm-2">
+                                        <div class="form-radio">
+                                          <label class="form-check-label">
+                                            <input type="radio" class="form-check-input"   [value]="true" [(ngModel)]="quest.obligatoire" [ngModelOptions]="{standalone: true}" >
+                                            Oui
+                                          </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-2">
+                                        <div class="form-radio">
+                                          <label class="form-check-label">
+                                            <input type="radio" class="form-check-input"  [value]="false" [(ngModel)]="quest.obligatoire" [ngModelOptions]="{standalone: true}">
+                                            Non
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- fin  Question obligé ou pas -->
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin  Question  -->
+
+              <!--  ajoutere une question / proposition!-->
+              <div *ngIf=" quest.type === 'Email' ">
+                <div class="col-md-12 grid-margin stretch-card" >
+                  <div class="card">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card-body">
+                            <div>
+                              <div class="grid">
+                                <div >
+                                    <button class="button cross" (click)="delete(i)" ></button>
+                                  <h3 class="card-title">#{{ i + 1 }}- Question type : {{quest.type}} </h3>
+                                  <h5>  Entrez  votre question </h5>
+
+                                  <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question" [(ngModel)]="quest.question" [ngModelOptions]="{standalone: true}" />
+                                  <!--  Question obligé ou pas -->
+                                  <div class="col-md-12">
+                                      <div class="form-group row">
+                                        <label class="col-md-5">  Obligatoire    :</label><hr>
+                                        <div class="col-sm-2">
+                                          <div class="form-radio">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input"   [value]="true" [(ngModel)]="quest.obligatoire" [ngModelOptions]="{standalone: true}" >
+                                              Oui
+                                            </label>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                          <div class="form-radio">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input"  [value]="false" [(ngModel)]="quest.obligatoire" [ngModelOptions]="{standalone: true}">
+                                              Non
+                                            </label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <!-- fin  Question obligé ou pas -->
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- fin  Question  -->
+               <!--  ajoutere une question / proposition!-->
+               <div *ngIf=" quest.type === 'Chiffre' ">
+                <div class="col-md-12 grid-margin stretch-card" >
+                  <div class="card">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card-body">
+                            <div>
+                              <div class="grid">
+                                <div >
+                                    <button class="button cross" (click)="delete(i)" > </button>
+                                  <h3 class="card-title">#{{ i + 1 }}- Question type : {{quest.type}} </h3>
+                                  <h5>  Entrez  votre question </h5>
+
+                                  <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question" [(ngModel)]="quest.question" [ngModelOptions]="{standalone: true}" />
+                                  <!--  Question obligé ou pas -->
+                                  <div class="col-md-12">
+                                      <div class="form-group row">
+                                        <label class="col-md-5">  Obligatoire    :</label><hr>
+                                        <div class="col-sm-2">
+                                          <div class="form-radio">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input"   [value]="true" [(ngModel)]="quest.obligatoire" [ngModelOptions]="{standalone: true}" >
+                                              Oui
+                                            </label>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                          <div class="form-radio">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input"  [value]="false" [(ngModel)]="quest.obligatoire" [ngModelOptions]="{standalone: true}">
+                                              Non
+                                            </label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <!-- fin  Question obligé ou pas -->
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+              <!-- fin  Question  -->
+
+<!-- Question  Liste -->
+
+  <!-- fin  Question  Mult -->
+
+
+  <!-- Question  Liste -->
+   <div *ngIf=" quest.type === 'Case1' ">
+    <div class="col-md-12 grid-margin stretch-card"  >
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-body">
+              <div >
+                <div class="grid">
+                  <div >
+                      <button class="button cross" (click)="delete(i)" > </button>
+                    <h3 class="card-title"># {{ i + 1 }} - Question type : {{quest.type}} </h3>
+                    <h5>  Entrez  votre question </h5>
+                    <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question" [(ngModel)]="quest.question" [ngModelOptions]="{standalone: true}" />
+                    <div *ngFor ="let  s of quest.multiQuest ; index as pos">
+                    <button class="btn btn-danger mr-2 btn-sm pull-right" (click)="deleteM(i,s)" >Supprimer </button>
+                      <h4 class="card-title">Proposition  #{{ Alpha[pos ] }}</h4>
+                      <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question" [(ngModel)]="s.question" [ngModelOptions]="{standalone: true}" />
+                      <!--  Question obligé ou pas -->
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                              <label class="col-md-5">  Obligatiore    :</label>
+                              <hr>
+                              <div class="col-sm-2">
+                                <div class="form-radio">
+                                  <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" [value]="true" [(ngModel)]="s.obligatoire" [ngModelOptions]="{standalone: true}">
+                                    Oui
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-sm-2">
+                                <div class="form-radio">
+                                  <label class="form-check-label">
+                                    <input type="radio" class="form-check-input"   [value]="false" [(ngModel)]="s.obligatoire" [ngModelOptions]="{standalone: true}">
+                                    Non
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    <!-- fin  Question obligé ou pas -->
+                        <hr>
+                      </div>
+                    <button class="btn btn-success mr-2" (click)="addQuestionMulti(i)" >Ajouter proposition </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- fin  Question  Mult -->
+
+
+
+
+
+
+
+
+  <!-- Question  Liste -->
+   <div *ngIf=" quest.type === 'Case2' ">
+    <div class="col-md-12 grid-margin stretch-card"  >
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-body">
+              <div >
+                <div class="grid">
+                  <div >
+                      <button class="button cross" (click)="delete(i)" > </button>
+                    <h3 class="card-title"># {{ i + 1 }} - Question type : {{quest.type}} </h3>
+                    <h5>  Entrez  votre question </h5>
+                    <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question" [(ngModel)]="quest.question" [ngModelOptions]="{standalone: true}" />
+                    <div *ngFor ="let  c of quest.multiQuest ; index as pos">
+                        <button class="btn btn-danger mr-2 btn-sm pull-right" (click)="deleteM(i,c)" >Supprimer</button>
+                      <h4 class="card-title">Proposition  #{{ Alpha[pos ] }}</h4>
+                      <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question" [(ngModel)]="c.question" [ngModelOptions]="{standalone: true}" />
+                      <!--  Question obligé ou pas -->
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                              <label class="col-md-5">  Obligatiore    :</label>
+                              <hr>
+                              <div class="col-sm-2">
+                                <div class="form-radio">
+                                  <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" [value]="true" [(ngModel)]="c.obligatoire" [ngModelOptions]="{standalone: true}">
+                                    Oui
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-sm-2">
+                                <div class="form-radio">
+                                  <label class="form-check-label">
+                                    <input type="radio" class="form-check-input"   [value]="false" [(ngModel)]="c.obligatoire" [ngModelOptions]="{standalone: true}">
+                                    Non
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    <!-- fin  Question obligé ou pas -->
+                        <hr>
+                      </div>
+                    <button class="btn btn-success mr-2" (click)="addQuestionMulti(i)" >Ajouter proposition </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- fin  Question  Mult -->
+
+
+
+               <!-- Question  -->
+            <div *ngIf=" quest.type === 'MultiQ' ">
+              <div class="col-md-12 grid-margin stretch-card"  >
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card-body">
+                        <div >
+                          <div class="grid">
+                            <div >
+                                <button class="button cross" (click)="delete(i)" > </button>
+                              <h3 class="card-title"># {{ i + 1 }} - Question type : {{quest.type}} </h3>
+                              <h5>  Entrez  votre question </h5>
+                              <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question" [(ngModel)]="quest.question" [ngModelOptions]="{standalone: true}" />
+                              <div *ngFor ="let q of quest.multiQuest ; index as pos">
+                                  <button class="btn btn-danger mr-2 btn-sm pull-right" (click)="deleteM(i,q)" >Supprimer </button>
+                                <h4 class="card-title">Proposition  #{{ Alpha[pos ] }}</h4>
+                                <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question" [(ngModel)]="q.question" [ngModelOptions]="{standalone: true}" />
+                                <!--  Question obligé ou pas -->
+                                  <div class="col-md-12">
+                                      <div class="form-group row">
+                                        <label class="col-md-5">  Obligatiore    :</label>
+                                        <hr>
+                                        <div class="col-sm-2">
+                                          <div class="form-radio">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input" [value]="true" [(ngModel)]="q.obligatoire" [ngModelOptions]="{standalone: true}">
+                                              Oui
+                                            </label>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                          <div class="form-radio">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input"   [value]="false" [(ngModel)]="q.obligatoire" [ngModelOptions]="{standalone: true}">
+                                              Non
+                                            </label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                              <!-- fin  Question obligé ou pas -->
+                                  <hr>
+                                </div>
+                              <button class="btn btn-success mr-2" (click)="addQuestionMulti(i)" >Ajouter proposition </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- fin  Question  Mult -->
+          <button class="btn btn-success mr-2" *ngIf="Formulaire.questions.length != 0 " (click)="onSubmit()">Submit</button>
+          <button  class="btn btn-success mr-2" *ngIf="Create==true"  routerLink="/resultforms/{{Formulaire.titre}}"  routerLinkActive="active">Visualiser</button>
+      </form>
+
+    </div>
+  </div>
+  <div class="alert" *ngIf="serverErrorMessages">
+      {{serverErrorMessages}}
+    </div>
+</main>

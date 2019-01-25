@@ -1,0 +1,269 @@
+<main class="html">
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper">
+
+
+
+        <form class="example-form" >
+            <p>Titre du formulaire : {{formulaires.titre}} </p>
+
+          <div *ngFor="let quest of formulaires?.questions; index as i" >
+            <!-- Le submit du formulaire !-->
+            <!--  ajoutere une question / proposition!-->
+            <div *ngIf=" quest.type === 'Simple' ">
+              <div class="col-md-12 grid-margin stretch-card"  >
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card-body">
+                        <div >
+                          <div class="grid">
+                            <div >
+
+                              <h2 class="card-title"># {{ i + 1 }}-{{quest.question}} </h2>
+                              <h5>  Entrez  votre Réponse</h5>
+                              <div *ngIf="quest.obligatoire==true">
+                              <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" required"  required  />
+                            </div>
+                            <div *ngIf="quest.obligatoire==false">
+                                <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" not required"  />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--  ajoutere une question / proposition!-->
+            <div *ngIf=" quest.type === 'Long' ">
+              <div class="col-md-12 grid-margin stretch-card" >
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card-body">
+                          <div>
+                            <div class="grid">
+                              <div >
+
+                                <h2 class="card-title">#{{ i + 1 }}-{{quest.question}} </h2>
+                                <h5>  Entrez Votre reponse  </h5>
+                                <div *ngIf="quest.obligatoire==true">
+                                <textarea class="form-control text-center" placeholder=" Entrez  Réponse" required >
+                                </textarea>
+                              </div>
+
+                              <div *ngIf="quest.obligatoir==false">
+                                  <textarea class="form-control text-center" placeholder=" Entrez  Réponse" >
+                                  </textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin  Question  -->
+
+              <!--  ajoutere une question / proposition!-->
+              <div *ngIf=" quest.type === 'Email' ">
+                <div class="col-md-12 grid-margin stretch-card" >
+                  <div class="card">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card-body">
+                            <div>
+                              <div class="grid">
+                                <div >
+
+                                  <h2 class="card-title">#{{ i + 1 }}- {{quest.question}} </h2>
+                                  <h5>  Entrez  votre question </h5>
+
+                                  <input type="email" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez email"  />
+
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- fin  Question  -->
+               <!--  ajoutere une question / proposition!-->
+               <div *ngIf=" quest.type === 'Chiffre' ">
+                <div class="col-md-12 grid-margin stretch-card" >
+                  <div class="card">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card-body">
+                            <div>
+                              <div class="grid">
+                                <div >
+
+                                  <h2 class="card-title">#{{ i + 1 }}- Question type : {{quest.type}} </h2>
+                                  <h5>  Entrez  votre réponse </h5>
+
+                                  <input type="text" class="form-control text-center" id="exampleInputCity1" placeholder=" Entrez  votre question"  />
+
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- fin  Question  -->
+
+
+
+
+
+
+
+
+  <!-- Question  Case 1 -->
+  <div *ngIf=" quest.type === 'Case1' ">
+      <div class="col-md-12 grid-margin stretch-card"  >
+        <div class="card">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-body">
+                <div >
+                  <div class="grid">
+                    <div >
+
+                      <h2 class="card-title"># {{ i + 1 }} -{{quest.question}} </h2>
+
+
+                      <div *ngFor ="let  s of quest.multiQuest ; index as pos">
+
+
+                          <div class="col-md-12">
+                              <div class="form-group row">
+
+                                <div class="col-sm-2">
+                                  <div class="form-radio">
+                                    <label class="form-check-label">
+                                      <input type="radio" class="form-check-input" >
+                                      {{ Alpha[pos ] }}-{{s.question}}
+                                    </label>
+                                  </div>
+                                </div>
+
+                              </div>
+                          </div>
+
+
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- fin  Question  Case 1 -->
+
+
+
+
+
+
+  <!-- Question  Case 2 -->
+  <div *ngIf=" quest.type === 'Case2' ">
+      <div class="col-md-12 grid-margin stretch-card"  >
+        <div class="card">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-body">
+                <div >
+                  <div class="grid">
+                    <div >
+
+                      <h2 class="card-title"># {{ i + 1 }} -{{quest.question}} </h2>
+
+                      <div *ngFor ="let  c of quest.multiQuest ; index as pos">
+
+
+
+                        <!--  Question obligé ou pas -->
+                          <div class="col-md-12">
+                              <div class="form-group row">
+                               <input type="checkbox" id="scales" name="c">
+                               <label for="c"> {{ Alpha[pos ] }}-{{c.question}} </label>
+
+                              </div>
+                          </div>
+                      <!-- fin  Question obligé ou pas -->
+
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- fin  Question Case 2  -->
+
+
+
+              <!-- Question  -->
+            <div *ngIf=" quest.type === 'MultiQ' ">
+                <div class="col-md-12 grid-margin stretch-card"  >
+                  <div class="card">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card-body">
+                          <div >
+                            <div class="grid">
+                              <div >
+                                <h2 class="card-title"># {{ i + 1 }} -{{quest.question}}  </h2>
+
+           <select  id="datacircuit" name="" ng-model="model.SelectedCircuit" ng-options="item.Name for item in model.Circuits" key="Id" >
+
+
+
+
+
+                                <div *ngFor ="let q of quest.multiQuest ; index as pos">
+                                   <option value="">{{q.question}}</option>
+
+                                  </div>
+
+                   </select>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin  Question  Mult -->
+          <button type="submit" class="btn btn-success mr-2" >Créer</button>
+      </form>
+
+    </div>
+  </div>
+</main>
